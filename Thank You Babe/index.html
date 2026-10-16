@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To My Forever 💕</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+  min-height: 100vh;
+  background: #0000ff;
+  color: #d0e8ff;
+  font-family: 'Playfair Display', Georgia, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 60px;
+}
+
+/* --- Background Video & Dark Overlay --- */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) contrast(1.1);
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 40, 0.75), rgba(0, 0, 60, 0.88));
+}
+
+/* --- Navigation / Top Bar --- */
+nav {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.nav-title {
+  font-family: 'Alex Brush', cursive;
+  font-size: 1.6rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.audio-control {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.audio-control:hover {
+  opacity: 1;
+}
+
+/* --- Main Container --- */
+main {
+  width: 100%;
+  max-width: 680px;
+  padding: 10px 20px 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Header --- */
+h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: #e0f0ff;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.big-heart {
+  font-size: 2.4rem;
+  filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.5));
+}
+
+.divider-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #7ab8ff;
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+
+.divider-small::before,
+.divider-small::after {
+  content: '—';
+  opacity: 0.6;
+}
+
+.subtitle {
+  font-family: 'Alex Brush', cursive;
+  font-size: 1.8rem;
+  color: #a3d0ff;
+  margin-bottom: 30px;
+}
+
+/* --- Glassmorphism Card --- */
+.letter-card {
+  width: 100%;
+  background: rgba(0, 0, 70, 0.45);
+  border: 1px solid rgba(0, 186, 253, 0.4);
+  border-radius: 18px;
+  padding: 40px 35px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  text-align: left;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin-bottom: 35px;
+}
+
+.letter-card p {
+  margin-bottom: 22px;
+}
+
+.letter-card p:last-of-type {
+  margin-bottom: 30px;
+}
+
+.closing-block {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.closing-block p {
+  margin-bottom: 6px;
+  color: #7ab8ff;
+}
+
+.card-heart-icon {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #00bafd;
+  display: block;
+  line-align: 1;
+}
+
+/* --- Interactive Call Button --- */
+.talk-btn {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(135deg, #0077ff, #002266);
+  border: 1px solid #00bafd;
+  border-radius: 30px;
+  padding: 16px 24px;
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.talk-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 150, 255, 0.8), rgba(0, 80, 180, 0.8));
+  border-color: rgba(180, 230, 255, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 100, 200, 0.4);
+}
+
+/* --- Decorative Bottom Section --- */
+.bottom-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 35px 0 15px 0;
+  color: #7ab8ff;
+  width: 60%;
+}
+
+.bottom-divider::before,
+.bottom-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to var(--dir, right), transparent, rgba(120, 180, 255, 0.5));
+}
+
+.bottom-divider::after {
+  --dir: left;
+}
+
+.footer-quote {
+  font-family: 'Alex Brush', cursive;
+  font-size: 1.9rem;
+  color: #b3d7ff;
+  margin-bottom: 12px;
+}
+
+.tiny-heart {
+  color: #00bafd;
+  font-size: 0.9rem;
+}
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.1rem; }
+      .letter-card { padding: 25px 20px; font-size: 0.98rem; }
+      .talk-btn { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <div class="video-container">
+    <video autoplay loop muted playsinline id="bg-video">
+      <source src="our-video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Audio Element (Qassïm - Around) -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="around.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Top Navigation Bar -->
+  <nav>
+    <span class="nav-title">My Babyyyyy 💕</span>
+    <button class="audio-control" id="audio-toggle">
+      <span>♫ Around</span>
+      <span style="margin: 0 4px;">|</span>
+      <span id="play-status">▶ Play</span>
+    </button>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <h1>To My Woman <span class="big-heart">💗</span></h1>
+    
+    <div class="divider-small">
+      <span>♥</span>
+    </div>
+
+    <p class="subtitle">Mama, this is just a little message from me to you...</p>
+
+    <article class="letter-card">
+      <p>Sweetheart 💕</p>
+
+      <p>I’ve been working on this for website for a while now. And it's finally done</p>
+
+      <p>First of all, I just want to tell you that I'm proud of you 😚❤️<p>
+
+      <p>I’m always proud and happy to call you mine anytime anyday 🥹😚</p>
+
+      <p>And at the same time, I also want to say thank you</p>
+
+      <p>Thank you for being the best girlfriend and for always being there just for me 😍🥰</p>
+
+      <p>Thank you for being mine 🥹❤️ Thank you for always giving me a reason to choose you every single day. Thank you for being my motivation.</p>
+
+      <p>Thank you for being my partner my daring. Thank you for making me experience what love truly means. Thank you for always giving me a reason to fight for you.</p>
+
+      <p>Thank you for always understanding me</p>
+
+      <p>And one thing I want you to always remember is</p>
+
+      <div class="closing-block">
+        <p>I'm always here for you no matter the situation</p>
+        <p>You will always have my support</p>
+        <p>I'd also do anything for you</p>
+        <p>I love you Mama💕</p>
+        <p>And I'd choose you and only you over and over again</p>
+        <p>Always and Forever♾️</p>
+        <span class="card-heart-icon">♡</span>
+      </div>
+    </article>
+
+    <!-- Updated Call to Action Button -->
+    <button class="talk-btn" id="talk-btn">
+      <span style="font-style: normal; font-size: 1.2rem;">📞</span> Click here to come back to whatsapp
+    </button>
+
+    <div class="bottom-divider">
+      <span>🌿 ♥ 🌿</span>
+    </div>
+
+    <p class="footer-quote">I really hope this puts a smile on your face</p>
+    <div class="tiny-heart">♥</div>
+  </main>
+
+  <script>
+    const audio = document.getElementById('bg-music');
+    const audioBtn = document.getElementById('audio-toggle');
+    const playStatus = document.getElementById('play-status');
+
+    function startAudio() {
+      audio.play().then(() => {
+        playStatus.textContent = '❚❚ Pause';
+        document.removeEventListener('click', startAudio);
+        document.removeEventListener('touchstart', startAudio);
+      }).catch(err => {
+        console.log("Autoplay blocked. Waiting for first interaction.");
+      });
+    }
+
+    // Attempt autoplay immediately
+    window.addEventListener('DOMContentLoaded', startAudio);
+
+    // Fallback: start audio on first touch/click anywhere on page
+    document.addEventListener('click', startAudio);
+    document.addEventListener('touchstart', startAudio);
+
+    // Toggle button handler
+    audioBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (audio.paused) {
+        audio.play().then(() => {
+          playStatus.textContent = '❚❚ Pause';
+        });
+      } else {
+        audio.pause();
+        playStatus.textContent = '▶ Play';
+      }
+    });
+
+    // Call Button Handler: Opens phone dialer directly
+    const talkBtn = document.getElementById('talk-btn');
+    talkBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); 
+      // REPLACE +12345678900 WITH YOUR ACTUAL PHONE NUMBER (e.g. +1... or +44...)
+      window.location.href = "https://wa.me/2347064695903";
+    });
+  </script>
+</body>
+</html>
